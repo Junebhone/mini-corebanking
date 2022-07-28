@@ -16,7 +16,6 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['submit'])) {
 
-
     $id = $_POST['id'];
     $data = array(
         "FirstName" => "'" . $_POST['FirstName'] . "'",
@@ -30,11 +29,12 @@ if (isset($_POST['submit'])) {
         "CompanyAddress" => "'" . $_POST['CompanyAddress'] . "'",
         "PhNumber" => "'" . $_POST['PhNumber'] . "'",
         "City" => "'" . $_POST['City'] . "'",
-        "Address" => "'" . $_POST['Address'] . "'"
+        "Address" => "'" . $_POST['Address'] . "'",
+        "status" => "'" . $_POST['status'] . "'"
     );
 
     update($con, $data, "customer", $id, "customerID");
-    header("location:customer_list.php");
+    // header("location:customer_list.php");
 }
 
 include './layout/header.php';

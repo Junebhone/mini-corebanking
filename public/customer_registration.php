@@ -11,8 +11,10 @@ if (isset($_POST['submit'])) {
 
     if ($NRC == $query['NRC']) {
         $_SESSION['NRC_duplicate'] = "alert";
-
     } else {
+
+        $status = "active";
+
         $data = array(
             "FirstName" => "'" . $_POST['FirstName'] . "'",
             "LastName" => "'" . $_POST['LastName'] . "'",
@@ -25,7 +27,8 @@ if (isset($_POST['submit'])) {
             "CompanyAddress" => "'" . $_POST['CompanyAddress'] . "'",
             "PhNumber" => "'" . $_POST['PhNumber'] . "'",
             "City" => "'" . $_POST['City'] . "'",
-            "Address" => "'" . $_POST['Address'] . "'"
+            "Address" => "'" . $_POST['Address'] . "'",
+            "status" => "'" . $status . "'"
         );
 
         insert($con, $data, 'customer');

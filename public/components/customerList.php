@@ -54,8 +54,19 @@
                         <?= $result['Address'] ?>
                     </td>
                     <td class="p-4 text-gray-700 whitespace-nowrap">
-                        <strong class="bg-red-100 text-red-700 px-3 py-1.5 rounded text-xs font-medium">
-                            Inactive
+                        <strong class=" px-3 py-1.5 rounded <?php
+
+                                                                switch ($result['status']) {
+                                                                    case "active":
+                                                                        echo "bg-green-200 text-green-600";
+                                                                        break;
+                                                                    case "blocked":
+                                                                        echo "bg-red-200 text-red-600";
+                                                                        break;
+                                                                    default:
+                                                                        echo "bg-gray-500";
+                                                                } ?> text-xs font-medium">
+                            <?= $result['status'] ?>
                         </strong>
                     </td>
                     <td class="p-4 text-gray-700 whitespace-nowrap">
