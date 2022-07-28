@@ -103,6 +103,7 @@ $(document).ready(function domReady() {
     alert(".alert-close", "success", "Closed Account Successfully");
     alert(".alert-NRC", "error", "This NRC has already registered");
     alert(".alert-amount", "error", "The amount is greater than the balance")
+    alert(".status-blocked", "error", "This account has been blocked");
 })
   </script>
   <!-- <script src="./js/index.js"></script> -->

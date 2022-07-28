@@ -62,7 +62,7 @@ function selectdatabyid($con, $table, $col, $id)
 {
     $select = "SELECT * FROM $table where $col= $id";
     $query = mysqli_query($con, $select);
-    return mysqli_fetch_array($query);
+    return mysqli_fetch_array($query); 
 }
 
 //select data by something
