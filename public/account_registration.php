@@ -29,11 +29,22 @@ if (isset($_POST['submit'])) {
     insert($con, $data, 'account');
 
 
+    $date = date("Y-m-d");
+    $description = "Account Opening";
+    $accountID = mysqli_insert_id($con);
+    $amount = $_POST['balance'];
 
+
+    $data = array(
+        "accountID" => "'" . $accountID . "'",
+        "amount" => "'" . $amount . "'",
+        "date" => "'" . $date . "'",
+        "description" => "'" . $description . "'"
+    );
+
+    insert($con, $data, 'transaction');
     header('location: account_list.php');
 }
-
-
 
 
 include "./layout/header.php";

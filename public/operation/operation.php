@@ -92,9 +92,11 @@ function insert($con, $data, $table)
         $values .= $value;
     }
 
-    echo $insert = ("INSERT INTO $table ($columns) VALUES ($values)");
+    $insert = ("INSERT INTO $table ($columns) VALUES ($values)");
     mysqli_query($con, $insert);
 }
+
+
 
 
 
