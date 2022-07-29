@@ -11,24 +11,30 @@ if (isset($_GET['id'])) {
     if ($result['status'] == 'blocked') {
         $_SESSION['status_blocked'] = "alert";
         header("location: customer_list.php");
-    } else {
-        if (isset($_POST['submit'])) {
-
-            $status = "opened";
-            $data = array(
-                "customerID" => "'" . $_POST['customerID'] . "'",
-                "accountType" => "'" . $_POST['accountType'] . "'",
-                "balance" => "'" . $_POST['balance'] . "'",
-                "status" => "'" . $status . "'"
-            );
-
-            insert($con, $data, 'account');
-            // header('location:listing.php');
-        }
     }
 } else {
     header("location: customer_list.php");
 }
+
+if (isset($_POST['submit'])) {
+
+    $status = "opened";
+    $data = array(
+        "customerID" => "'" . $_POST['customerID'] . "'",
+        "accountType" => "'" . $_POST['accountType'] . "'",
+        "balance" => "'" . $_POST['balance'] . "'",
+        "status" => "'" . $status . "'"
+    );
+
+    insert($con, $data, 'account');
+
+
+
+    header('location: account_list.php');
+}
+
+
+
 
 include "./layout/header.php";
 include "./components/navigation.php";

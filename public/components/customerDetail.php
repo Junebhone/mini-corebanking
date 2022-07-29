@@ -1,8 +1,7 @@
 <!-- component -->
 <div class=" p-5 w-full">
 
-
-    <div class="grid gap-10">
+    <div class="grid gap-5">
         <div class="bg-white border border-gray-300 rounded-lg overflow-hidden">
 
             <img src=" ./image/bg.jpeg" class="object-cover object-center  h-64 w-full">
@@ -88,17 +87,18 @@
 
 
 
-        <div class="gird grid-cols-3">
 
-            <?php
 
-            $select = "select * from account where customerID = $id";
-            $query = mysqli_query($con, $select);
+        <?php
 
-            while ($result = mysqli_fetch_array($query)) {
+        $select = "select * from account where customerID = $id";
+        $query = mysqli_query($con, $select);
 
-            ?>
-            <div class="bg-white border border-gray-300 rounded-lg p-5 ">
+        while ($result = mysqli_fetch_array($query)) {
+
+        ?>
+        <div class="grid xl:grid-cols-3 ">
+            <div class="bg-white border border-gray-300 rounded-lg p-10">
                 <span class="text-gray-800 text-2xl font-semibold leading-tight mb-10">Account Detail</span>
                 <div class="px-4 grid grid-cols-2  gap-5">
                     <div class="flex flex-col gap-2">
@@ -106,15 +106,40 @@
                         <span><?= $result['accountID'] ?></span>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <label class="text-gray-500">Customer ID</label>
-                        <span><?= $result['accountID'] ?></span>
+                        <label class="text-gray-500">Account Type</label>
+                        <span>
+                            <?php
+                                switch ($result['accountType']) {
+                                    case "1":
+                                        echo "Saving Account";
+                                        break;
+                                    case "2":
+                                        echo "Fixed Deposit Account (3 Months)";
+                                        break;
+                                    case "3":
+                                        echo "Fixed Deposit Account (4 Months)";
+                                    default:
+                                        echo "No account";
+                                }
+
+                                ?>
+                        </span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-gray-500">Balance</label>
+                        <span><?= $result['balance'] ?></span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-gray-500">Status</label>
+                        <span><?= $result['status'] ?></span>
                     </div>
                 </div>
 
             </div>
-            <?php
-            }
-            ?>
         </div>
+
+        <?php
+        }
+        ?>
     </div>
 </div>

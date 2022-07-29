@@ -62,7 +62,7 @@ function selectdatabyid($con, $table, $col, $id)
 {
     $select = "SELECT * FROM $table where $col= $id";
     $query = mysqli_query($con, $select);
-    return mysqli_fetch_array($query); 
+    return mysqli_fetch_array($query);
 }
 
 //select data by something
@@ -92,7 +92,7 @@ function insert($con, $data, $table)
         $values .= $value;
     }
 
-    $insert = ("INSERT INTO $table ($columns) VALUES ($values)");
+    echo $insert = ("INSERT INTO $table ($columns) VALUES ($values)");
     mysqli_query($con, $insert);
 }
 
