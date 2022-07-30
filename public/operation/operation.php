@@ -2,23 +2,6 @@
 
 session_start();
 
-//login function
-function login($con, $username, $password)
-{
-
-    $row = selectdatabysomething($con, "admin", "name", "$username");
-
-    if ($username == $row['name'] && $password == $row['password']) {
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['username'] = $row['name'];
-        echo "<script>window.alert('successfully logged in')</script>";
-        echo "<script>window.location='index.php'</script>";
-    } else {
-        global $loginError;
-        $loginError = "Username Or Password is wrong";
-    }
-}
-
 //Session User Function
 function loggedIn($username)
 {
@@ -138,4 +121,33 @@ function alert($class, $session)
     if (isset($session)) {
         echo "<div class='$class' data-flashdata='$session'></div>";
     }
+}
+
+
+//login function
+function login($con, $username, $password)
+{
+
+    $row = selectdatabysomething($con, "admin", "name", "$username");
+
+    if ($username == $row['name'] && $password == $row['password']) {
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['username'] = $row['name'];
+        echo "<script>window.alert('successfully logged in')</script>";
+        echo "<script>window.location='index.php'</script>";
+    } else {
+        global $loginError;
+        $loginError = "Username Or Password is wrong";
+    }
+}
+
+
+// signup function
+function signup($con, $data, $table)
+{
+
+    insert($con, $data, $table);
+
+    echo "<script>window.alert('successfully signed up)</script>";
+    echo "<script>window.location='login.php'</script>";
 }

@@ -1,8 +1,8 @@
-<div class="w-full p-5">
+<div class="w-full p-5 mb-5">
     <div class="my-5">
         <h2 class="text-2xl font-semibold leading-tight">Transaction List</h2>
     </div>
-    <div class="overflow-auto h-[80vh] bg-white p-4 rounded-md shadow-md">
+    <div class="overflow-x-auto  bg-white p-4 rounded-md shadow-md">
         <table class="min-w-full  text-sm divide-y divide-gray-200">
             <thead>
                 <tr>
