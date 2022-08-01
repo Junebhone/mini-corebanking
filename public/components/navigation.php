@@ -18,7 +18,7 @@ loggedIn($_SESSION['username']);
     </div>
 </div>
 <div id="nav"
-    class="bg-gray-800 z-10 text-blue-100 w-60  space-y-6 py-7 px-2 fixed inset-y-0 left-0 transform -translate-x-full md:sticky md:top-0 md:h-screen   md:translate-x-0 transition duration-500 ease-in-out">
+    class="bg-gray-800 z-10 text-blue-100 w-60  space-y-6 py-7 px-2 fixed inset-y-0 left-0 transform -translate-x-full md:sticky h-screen  md:translate-x-0 transition duration-500 ease-in-out">
 
     <!--     logo -->
     <a href="./index.php" class="text-white w-full flex justify-center items-center space-x-2 px-4">

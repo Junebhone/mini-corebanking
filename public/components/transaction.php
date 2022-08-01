@@ -52,24 +52,24 @@
                     <td class="p-4 text-gray-700 whitespace-nowrap">
                         <?= $result['date'] ?>
                     </td>
-                    <td class="p-4 text-gray-700 whitespace-nowrap">
-                        <span class="px-4 py-2 <?php
+                    <td class="p-4 flex justify-center  whitespace-nowrap">
+                        <strong class=" w-32 py-2   <?php
 
-                                                    switch ($result['description']) {
-                                                        case "deposit":
-                                                            echo "bg-green-500";
-                                                            break;
-                                                        case "withdraw":
-                                                            echo "bg-red-500";
-                                                            break;
-                                                        default:
-                                                            echo "bg-gray-500";
-                                                    } ?> text-white rounded-md">
-
-
+                                                        switch ($result['description']) {
+                                                            case "deposit":
+                                                                echo "bg-green-100 text-green-700";
+                                                                break;
+                                                            case "withdraw":
+                                                                echo "bg-red-100 text-red-700";
+                                                                break;
+                                                            default:
+                                                                echo "bg-gray-100 text-gray-700";
+                                                        } ?> text-white rounded-md">
 
 
-                            <?= $result['description']  ?></span>
+
+
+                            <?= $result['description']  ?></strong>
 
                     </td>
 
