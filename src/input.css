@@ -229,7 +229,7 @@
         background-color: #fff;
         margin: 0;
         min-width: 100px;
-        max-height: 650px;
+        max-height: 400px;
         overflow-y: auto;
         z-index: 999;
         will-change: width, height;
@@ -241,7 +241,7 @@
         cursor: pointer;
         clear: both;
         color: rgba(0, 0, 0, 0.87);
-        line-height: 1.5rem;
+        line-height: 0.5rem;
         text-align: left;
         text-transform: none;
         /* @extend .dropdown-content li>a, .dropdown-content li>span */
@@ -294,3 +294,9 @@
     .select2-container--material.select2-container--disabled.select2-container--focus .select2-selection {
         box-shadow: none;
     }
+
+
+
+      ul.select2-results {
+  max-height: 200px;
+}

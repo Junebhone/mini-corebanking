@@ -82,6 +82,10 @@ loggedIn($_SESSION['username']);
                 </div>
             </div>
         </div>
+        <div>
+            <a href="./report.php"
+                class="flex w-full  justify-between items-center gap-2 rounded py-2.5 px-4 capitalize transition duration-500 hover:bg-gray-600 hover:text-white">Report</a>
+        </div>
         <div class="btn">
             <button
                 class="dropdown flex w-full  justify-between items-center gap-2 rounded py-2.5 px-4 capitalize transition duration-500 hover:bg-gray-600 hover:text-white">

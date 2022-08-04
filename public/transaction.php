@@ -4,8 +4,15 @@
 include "./operation/connect.php";
 include "./operation/operation.php";
 
+$today = date("Y-m-d");
 
-$query = selectalldata($con, "transaction");
+
+$select = "select * from transaction where date = '$today'";
+$query = mysqli_query($con, $select);
+
+
+
+
 
 
 include "./layout/header.php";

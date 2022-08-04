@@ -2,11 +2,13 @@
   <script src="./js/select2.full.js"></script>
   <script src="./js/datepicker.js"></script>
   <script src="./js/sweetalert.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <script>
 "use strict";
 
 
 $(document).ready(function domReady() {
+
 
     //side nav bar and humbarger menu
     $("#toggle").click(() => {
@@ -22,17 +24,15 @@ $(document).ready(function domReady() {
         $(this).find('#drop').slideToggle('fast', 'swing');
     })
 
-
-
     $(".js-select2").select2({
         theme: "material",
         minimumResultsForSearch: Infinity
 
     });
 
-    $(".select2-selection__arrow")
-        .addClass("material-icons")
-        .html("arrow_drop_down");
+    $(".js-select").select2({
+        theme: "material",
+    });
 
     $("#customerSelect").change(function() {
         let value = $("#customerSelect").select2('val');
@@ -44,6 +44,12 @@ $(document).ready(function domReady() {
         }
 
     })
+
+    $(".select2-selection__arrow")
+        .addClass("material-icons")
+        .html("arrow_drop_down");
+
+
 
 
     function dialog(id, text, confirm) {
@@ -98,15 +104,33 @@ $(document).ready(function domReady() {
     }
 
 
-
     alert(".alert-open", "success", "Opened Account Successfully");
     alert(".alert-close", "success", "Closed Account Successfully");
     alert(".alert-NRC", "error", "This NRC has already registered");
     alert(".alert-amount", "error", "The amount is greater than the balance")
     alert(".status-blocked", "error", "This account has been blocked");
+
+    $("#stateNumber").change(function() {
+        const state_number_en = $(this).select2('val');
+        $.ajax({
+            url: "district.php",
+            type: "POST",
+            data: {
+                state_number: state_number_en
+            },
+            success: function(result) {
+
+                $("#district").html(result);
+                console.log(result);
+            }
+        })
+    })
+
+
+
+
 })
   </script>
-  <!-- <script src="./js/index.js"></script> -->
 
   </body>
 
