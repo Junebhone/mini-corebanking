@@ -1,4 +1,6 @@
 <!-- component -->
+
+
 <div class=" p-5 w-full">
     <form autocomplete="off" action="customer_registration.php" method="POST" enctype="multipart/form-data">
         <div class="bg-white rounded-md shadow-md  overflow-hidden">

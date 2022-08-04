@@ -78,8 +78,8 @@
 
             <tbody class="divide-y divide-gray-100 text-center">
                 <?php
-                while ($result = mysqli_fetch_array($query)) {
-                ?>
+            while ($result = mysqli_fetch_array($query)) {
+            ?>
                 <tr>
 
                     <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
@@ -91,18 +91,18 @@
                         <strong class=" w-32 py-2  bg-gray-500 text-gray-100  rounded-md">
 
                             <?php
-                                $type = $result['accountType'];
-                                switch ($type) {
-                                    case "1":
-                                        echo "Saving Account";
-                                        break;
-                                    case "2":
-                                        echo "Fixed Account (6 months)";
-                                        break;
-                                    case "3":
-                                        echo "Fixed Acccount (1 year)";
-                                }
-                                ?>
+                            $type = $result['accountType'];
+                            switch ($type) {
+                                case "1":
+                                    echo "Saving Account";
+                                    break;
+                                case "2":
+                                    echo "Fixed Account (6 months)";
+                                    break;
+                                case "3":
+                                    echo "Fixed Acccount (1 year)";
+                            }
+                            ?>
 
 
                         </strong>
@@ -117,16 +117,16 @@
                     <td class="p-4 flex justify-center  whitespace-nowrap">
                         <strong class=" w-32 py-2   <?php
 
-                                                        switch ($result['description']) {
-                                                            case "deposit":
-                                                                echo "bg-green-100 text-green-600";
-                                                                break;
-                                                            case "withdraw":
-                                                                echo "bg-red-100 text-red-600";
-                                                                break;
-                                                            default:
-                                                                echo "bg-gray-100 text-gray-600";
-                                                        } ?> text-white rounded-md">
+                                                    switch ($result['description']) {
+                                                        case "deposit":
+                                                            echo "bg-green-100 text-green-600";
+                                                            break;
+                                                        case "withdraw":
+                                                            echo "bg-red-100 text-red-600";
+                                                            break;
+                                                        default:
+                                                            echo "bg-gray-100 text-gray-600";
+                                                    } ?> text-white rounded-md">
 
 
                             <?= $result['description']  ?></strong>
@@ -135,8 +135,8 @@
 
                 </tr>
                 <?php
-                }
-                ?>
+            }
+            ?>
 
 
 

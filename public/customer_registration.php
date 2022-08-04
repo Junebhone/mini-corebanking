@@ -52,8 +52,9 @@ if (isset($_POST['submit'])) {
 }
 
 
-include "./components/alert.php";
+
 include "./layout/header.php";
 include "./components/navigation.php";
 include "./components/customer.php";
 include "./layout/footer.php";
+include "./components/alert.php";
