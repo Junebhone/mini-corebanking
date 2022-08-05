@@ -76,17 +76,73 @@
                                 </div>
                             </div>
                         </div>
-                        <div class=" md:flex">
-                            <div class="md:w-1/3 px-3">
-                                <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                                    for="grid-password">
-                                    NRC Number
-                                </label>
-                                <input name="NRC" value="<?= $query['NRC'] ?>"
-                                    class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
-                                    id="grid-password" type="varchar" placeholder="12/BHN(N)108238">
+
+                        <div class="w-full px-3 mb-6">
+                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                for="grid-password">
+                                NRC Number
+
+                            </label>
+                            <div class="grid grid-cols-1  md:grid-cols-3 gap-5">
+                                <div class="">
+                                    <select name="state" id="stateNumber" class="js-select ">
+
+                                        <?php
+
+                                        foreach ($query1 as $key => $value) {
+
+                                        ?> <option value="<?= $value['state_number_en'] ?>" <?php
+                                                                                            if ($value['state_number_en'] == $query['state_number_en']) {
+                                                                                                echo "selected";
+                                                                                            }
+                                                                                            ?>>
+                                            <?= $value['state_number_en'] ?></option>
+
+                                        <?php
+
+                                        }
+
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="">
+                                    <select name="district" id="district" class="js-select">
+                                        <option value="" selected>Select Distrct</option>
+                                        <?php
+
+                                        foreach ($query2 as $key => $value) {
+
+                                        ?> <option value="<?= $value['short_district'] ?>" <?php
+                                                                                            if ($value['short_district'] == $query['short_district']) {
+                                                                                                echo "selected";
+                                                                                            }
+                                                                                            ?>>
+                                            <?= $query['short_district'] ?></option>
+
+                                        <?php
+
+                                        }
+
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="">
+
+
+
+                                    <input name="NRC" value="<?= $query['NRC'] ?>"
+                                        class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                                        id="grid-city" type="text" placeholder="Enter NRC Number">
+
+
+
+                                </div>
                             </div>
-                            <div class="md:w-1/3 px-3">
+
+                        </div>
+                        <div class=" md:flex">
+
+                            <div class="md:w-1/2 px-3">
                                 <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
                                     for="grid-password">
                                     Customer Type
@@ -101,7 +157,7 @@
                                                                 } ?>>Enterprise</option>
                                 </select>
                             </div>
-                            <div class="md:w-1/3 px-3">
+                            <div class="md:w-1/2 px-3">
                                 <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
                                     for="grid-password">
                                     Customer Type
@@ -117,6 +173,7 @@
                                 </select>
                             </div>
                         </div>
+
                         <div id="Company" class="hidden overflow-hidden">
                             <div class="flex my-10">
                                 <div class="font-bold">Company Information</div>

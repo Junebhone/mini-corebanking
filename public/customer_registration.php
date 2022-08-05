@@ -23,19 +23,16 @@ if (isset($_POST['submit'])) {
         $_SESSION['NRC_duplicate'] = "alert";
     } else {
         $status = "active";
-        $state = $_POST['state'];
-        $district = $_POST['district'];
-        $back = "/";
-        $N = "(N)";
-        $Number = $_POST['NRC'];
-        $NRC = $_POST['state'] . $back . $_POST['district'] . $N . $Number;
+
 
         $data = array(
             "FirstName" => "'" . $_POST['FirstName'] . "'",
             "LastName" => "'" . $_POST['LastName'] . "'",
             "Gender" => "'" . $_POST['Gender'] . "'",
             "DOB" => "'" . $_POST['DOB'] . "'",
-            "NRC" => "'" . $NRC . "'",
+            "state_number_en" => "'" . $_POST['state'] .  "'",
+            "long_district" => "'" . $_POST['district'] .  "'",
+            "NRC" => "'" . $_POST['NRC'] . "'",
             "Type" => "'" . $_POST['Type'] . "'",
             "CompanyName" => "'" . $_POST['CompanyName'] . "'",
             "CompanyNRC" => "'" . $_POST['CompanyNRC'] . "'",

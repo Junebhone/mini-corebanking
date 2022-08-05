@@ -7,26 +7,51 @@
         method="POST" autocomplete="off" action="report.php">
         <div>
             <input name="startDate" datepicker="" datepicker-buttons="" datepicker-autohide="" type="text"
-                datepicker-format="yyyy-mm-dd" value="<?= date("Y-m-d") ?>"
+                datepicker-format="yyyy-mm-dd"
+                value="<?php if (isset($_POST['startDate'])) {
+                                                                                                                                                        echo $_POST['startDate'];
+                                                                                                                                                    } else {
+                                                                                                                                                        echo $da = date("Y-m-d");
+                                                                                                                                                    } ?>"
                 class=" appearance-none block w-full bg-grey-lighter text-grey-darker border border-gray-300  py-3 px-4 rounded-l-md datepicker-input"
                 placeholder="Start Date">
         </div>
         <div>
             <input name="endDate" datepicker="" datepicker-buttons="" datepicker-autohide="" type="text"
-                datepicker-format="yyyy-mm-dd" value="<?= date("Y-m-d") ?>"
-                class=" appearance-none block w-full bg-grey-lighter text-grey-darker border border-gray-300  py-3 px-4  datepicker-input"
-                placeholder="End Date">
+                datepicker-format="yyyy-mm-dd"
+                value="<?php if (isset($_POST['endDate'])) {
+                                                                                                                                                    echo $_POST['endDate'];
+                                                                                                                                                } else {
+                                                                                                                                                    echo $da = date("Y-m-d");
+                                                                                                                                                } ?>"
+                class=" appearance-none block w-full bg-grey-lighter text-grey-darker border
+            border-gray-300 py-3 px-4 datepicker-input" placeholder="End Date">
         </div>
         <div class=" border border-gray-300">
             <select class="js-select2 js-states form-control w-full" name="accountType">
                 <option value="" selected>Select Account Type</option>
-                <option value="1">Saving Account</option>
-                <option value="2">Fixed Deposit Account (6 months)</option>
-                <option value="3">Fixed Deposit Acccount (1 year)</option>
+                <option value="1" <?php
+                                    if ($_POST['accountType'] == "1") {
+                                        echo "selected";
+                                    }
+
+                                    ?>>Saving Account</option>
+                <option value="2" <?php
+                                    if ($_POST['accountType'] == "2") {
+                                        echo "selected";
+                                    }
+
+                                    ?>>Fixed Deposit Account (6 months)</option>
+                <option value="3" <?php
+                                    if ($_POST['accountType'] == "3") {
+                                        echo "selected";
+                                    }
+
+                                    ?>>Fixed Deposit Acccount (1 year)</option>
             </select>
         </div>
         <div>
-            <input type="text" id="simple-search" name="accountID"
+            <input type="text" id="simple-search" name="accountID" value="<?= $_POST['accountID'] ?>"
                 class="bg-white border border-gray-300 text-gray-900   focus:ring-blue-500 focus:border-blue-500 block w-full  py-3 px-4  "
                 placeholder="Search By AccountID">
         </div>
@@ -78,8 +103,8 @@
 
             <tbody class="divide-y divide-gray-100 text-center">
                 <?php
-            while ($result = mysqli_fetch_array($query)) {
-            ?>
+                while ($result = mysqli_fetch_array($query)) {
+                ?>
                 <tr>
 
                     <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
@@ -91,18 +116,18 @@
                         <strong class=" w-32 py-2  bg-gray-500 text-gray-100  rounded-md">
 
                             <?php
-                            $type = $result['accountType'];
-                            switch ($type) {
-                                case "1":
-                                    echo "Saving Account";
-                                    break;
-                                case "2":
-                                    echo "Fixed Account (6 months)";
-                                    break;
-                                case "3":
-                                    echo "Fixed Acccount (1 year)";
-                            }
-                            ?>
+                                $type = $result['accountType'];
+                                switch ($type) {
+                                    case "1":
+                                        echo "Saving Account";
+                                        break;
+                                    case "2":
+                                        echo "Fixed Account (6 months)";
+                                        break;
+                                    case "3":
+                                        echo "Fixed Acccount (1 year)";
+                                }
+                                ?>
 
 
                         </strong>
@@ -117,16 +142,16 @@
                     <td class="p-4 flex justify-center  whitespace-nowrap">
                         <strong class=" w-32 py-2   <?php
 
-                                                    switch ($result['description']) {
-                                                        case "deposit":
-                                                            echo "bg-green-100 text-green-600";
-                                                            break;
-                                                        case "withdraw":
-                                                            echo "bg-red-100 text-red-600";
-                                                            break;
-                                                        default:
-                                                            echo "bg-gray-100 text-gray-600";
-                                                    } ?> text-white rounded-md">
+                                                        switch ($result['description']) {
+                                                            case "deposit":
+                                                                echo "bg-green-100 text-green-600";
+                                                                break;
+                                                            case "withdraw":
+                                                                echo "bg-red-100 text-red-600";
+                                                                break;
+                                                            default:
+                                                                echo "bg-gray-100 text-gray-600";
+                                                        } ?> text-white rounded-md">
 
 
                             <?= $result['description']  ?></strong>
@@ -135,8 +160,8 @@
 
                 </tr>
                 <?php
-            }
-            ?>
+                }
+                ?>
 
 
 

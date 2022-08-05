@@ -104,6 +104,7 @@ $(document).ready(function domReady() {
     }
 
 
+
     alert(".alert-open", "success", "Opened Account Successfully");
     alert(".alert-close", "success", "Closed Account Successfully");
     alert(".alert-NRC", "error", "This NRC has already registered");
@@ -119,15 +120,11 @@ $(document).ready(function domReady() {
                 state_number: state_number_en
             },
             success: function(result) {
-
                 $("#district").html(result);
                 console.log(result);
             }
         })
     })
-
-
-
 
 })
   </script>
