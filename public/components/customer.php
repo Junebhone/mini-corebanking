@@ -98,13 +98,23 @@
 
                                     </select>
                                 </div>
-                                <div class="">
 
+                                <div class="flex gap-5">
 
+                                    <div class="md:w-1/2">
+                                        <select name="district" id="district" class="js-select">
+                                            <option value="" selected>Select ID type</option>
+                                            <option value="N">N</option>
+                                            <option value="O">O</option>
+                                            <option value="P">P</option>
+                                        </select>
+                                    </div>
+                                    <div class="md:w-1/2">
+                                        <input name="NRC"
+                                            class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                                            id="grid-city" type="text" placeholder="Enter NRC Number">
+                                    </div>
 
-                                    <input name="NRC"
-                                        class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-                                        id="grid-city" type="text" placeholder="Enter NRC Number">
 
 
 

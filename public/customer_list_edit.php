@@ -7,7 +7,7 @@ include './operation/operation.php';
 $select = "select state_number_en from nrcs group by state_number_en";
 $query1 = mysqli_query($con, $select);
 
-$select1 = "select short_district from nrcs group by short_district";
+$select1 = "select long_district from nrcs group by long_district";
 $query2 = mysqli_query($con, $select1);
 
 
@@ -28,6 +28,7 @@ if (isset($_POST['submit'])) {
         "Gender" => "'" . $_POST['Gender'] . "'",
         "DOB" => "'" . $_POST['DOB'] . "'",
         "state_number_en" => "'" . $_POST['state'] .  "'",
+        "IDtype" => "'" . $_POST['IDtype'] . "'",
         "long_district" => "'" . $_POST['district'] .  "'",
         "NRC" => "'" . $_POST['NRC'] . "'",
         "Type" => "'" . $_POST['Type'] . "'",
@@ -41,7 +42,7 @@ if (isset($_POST['submit'])) {
     );
 
     update($con, $data, "customer", $id, "customerID");
-    // header("location:customer_list.php");
+    header("location:customer_list.php");
 }
 
 include './layout/header.php';

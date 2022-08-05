@@ -112,12 +112,12 @@
 
                                         foreach ($query2 as $key => $value) {
 
-                                        ?> <option value="<?= $value['short_district'] ?>" <?php
-                                                                                            if ($value['short_district'] == $query['short_district']) {
+                                        ?> <option value="<?= $value['long_district'] ?>" <?php
+                                                                                            if ($value['long_district'] == $query['long_district']) {
                                                                                                 echo "selected";
                                                                                             }
                                                                                             ?>>
-                                            <?= $query['short_district'] ?></option>
+                                            <?= $value['long_district'] ?></option>
 
                                         <?php
 
@@ -126,13 +126,24 @@
                                         ?>
                                     </select>
                                 </div>
-                                <div class="">
+                                <div class="flex gap-5">
 
+                                    <div class="md:w-1/2">
+                                        <select name="district" id="district" class="js-select">
+                                            <option value="" selected>Select ID type</option>
+                                            <option value="N" <?php if ($query['IDtype'] == "N") {
+                                                                    echo "selected";
+                                                                } ?>>N</option>
+                                            <option value="O">O</option>
+                                            <option value="P">P</option>
+                                        </select>
+                                    </div>
+                                    <div class="md:w-1/2">
+                                        <input name="NRC" value="<?= $query['NRC'] ?>"
+                                            class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                                            id="grid-city" type="text" placeholder="Enter NRC Number">
+                                    </div>
 
-
-                                    <input name="NRC" value="<?= $query['NRC'] ?>"
-                                        class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-                                        id="grid-city" type="text" placeholder="Enter NRC Number">
 
 
 

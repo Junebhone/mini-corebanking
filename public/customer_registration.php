@@ -31,6 +31,7 @@ if (isset($_POST['submit'])) {
             "Gender" => "'" . $_POST['Gender'] . "'",
             "DOB" => "'" . $_POST['DOB'] . "'",
             "state_number_en" => "'" . $_POST['state'] .  "'",
+            "IDtype" => "'" . $_POST['IDtype'] . "'",
             "long_district" => "'" . $_POST['district'] .  "'",
             "NRC" => "'" . $_POST['NRC'] . "'",
             "Type" => "'" . $_POST['Type'] . "'",
@@ -44,7 +45,7 @@ if (isset($_POST['submit'])) {
         );
 
         insert($con, $data, 'customer');
-        // header('location:listing.php');
+        header("location:customer_list.php");
     }
 }
 
