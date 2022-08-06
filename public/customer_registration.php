@@ -11,15 +11,15 @@ $query = mysqli_query($con, $select);
 if (isset($_POST['submit'])) {
 
     $state = $_POST['state'];
+    $IDtype = $_POST['IDtype'];
     $district = $_POST['district'];
-    $back = "/";
-    $N = "(N)";
-    $Number = $_POST['NRC'];
-    $NRC = $_POST['state'] . $back . $_POST['district'] . $N . $Number;
-    $query1 = selectdatabysomething($con, "customer", "NRC", $NRC);
+    $NRC = $_POST['NRC'];
 
-    if ($NRC == $query1['NRC']) {
 
+    $select1 = "select * from customer where state_number_en ='$state' and IDtype = '$IDtype' and long_district = '$district' and NRC = '$NRC' ";
+    $query1 = mysqli_query($con, $select1);
+    $result = mysqli_fetch_array($query1);
+    if ($state = $result['state_number_en'] && $IDtype = $result['IDtype'] && $district = $result['long_district'] && $NRC = $result['NRC']) {
         $_SESSION['NRC_duplicate'] = "alert";
     } else {
         $status = "active";
@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
         );
 
         insert($con, $data, 'customer');
-        header("location:customer_list.php");
+        // header("location:customer_list.php");
     }
 }
 

@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="./css/output.css">
     <link rel="stylesheet" href="./css/select2.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./js/tailwind.js"></script>
 
 
 </head>

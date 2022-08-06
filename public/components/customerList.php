@@ -75,7 +75,17 @@
                         </strong>
                     </td>
                     <td class="p-4 text-gray-700 whitespace-nowrap">
-                        <?= $result['NRC'] ?>
+                        <?php
+                            $NRC = $result['NRC'];
+                            $state = $result['state_number_en'];
+                            $IDtype = $result['IDtype'];
+                            $district = $result['long_district'];
+                            $back = "/";
+                            echo $number = $state . $back . $district . $IDtype . $NRC;
+
+
+
+                            ?>
                     </td>
                     <td class="p-4 text-gray-700 whitespace-nowrap flex gap-5 justify-center items-center">
                         <a href="./customer_list_edit.php?id=<?= $result['customerID'] ?>">

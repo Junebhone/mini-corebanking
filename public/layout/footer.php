@@ -27,7 +27,6 @@ $(document).ready(function domReady() {
     $(".js-select2").select2({
         theme: "material",
         minimumResultsForSearch: Infinity
-
     });
 
     $(".js-select").select2({
@@ -121,10 +120,30 @@ $(document).ready(function domReady() {
             },
             success: function(result) {
                 $("#district").html(result);
-                console.log(result);
             }
         })
     })
+
+
+
+
+
+    if ($("#customerID").val()) {
+        const customerID = $("#customerID").val();
+        const state_number_en = $("#stateNumber").select2('val');
+        $.ajax({
+            url: "districtEdit.php",
+            type: "POST",
+            data: {
+                state_number: state_number_en,
+                customerID: customerID
+            },
+            success: function(result) {
+                $("#district").html(result);
+            }
+        })
+    }
+
 
 })
   </script>

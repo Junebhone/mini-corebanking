@@ -40,7 +40,6 @@
                         <span><?= $result['Type'] ?></span>
                     </div>
 
-
                     <?php
 
                     if ($result['Type'] == "enterprise") {
@@ -69,11 +68,20 @@
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="text-gray-500">City</label>
-                        <span><?= $result['PhNumber'] ?></span>
+                        <span class="capitalize"><?= $result['City'] ?></span>
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="text-gray-500">Address</label>
-                        <span><?= $result['PhNumber'] ?></span>
+                        <span><?= $result['Address'] ?></span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-gray-500">NRC</label>
+                        <span><?php $NRC = $result['NRC'];
+                                $state = $result['state_number_en'];
+                                $IDtype = $result['IDtype'];
+                                $district = $result['long_district'];
+                                $back = "/";
+                                echo $number = $state . $back . $district . $IDtype . $NRC; ?></span>
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="text-gray-500">Status</label>

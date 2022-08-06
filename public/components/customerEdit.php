@@ -14,7 +14,8 @@
                         </div>
                         <div class="md:flex mb-6">
                             <div class="hidden">
-                                <input type="number" name="id" value="<?= condition($query['customerID']) ?>">
+                                <input type="number" name="id" id="customerID"
+                                    value="<?= condition($query['customerID']) ?>">
                             </div>
                             <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
@@ -108,34 +109,23 @@
                                 <div class="">
                                     <select name="district" id="district" class="js-select">
                                         <option value="" selected>Select Distrct</option>
-                                        <?php
 
-                                        foreach ($query2 as $key => $value) {
-
-                                        ?> <option value="<?= $value['long_district'] ?>" <?php
-                                                                                            if ($value['long_district'] == $query['long_district']) {
-                                                                                                echo "selected";
-                                                                                            }
-                                                                                            ?>>
-                                            <?= $value['long_district'] ?></option>
-
-                                        <?php
-
-                                        }
-
-                                        ?>
                                     </select>
                                 </div>
                                 <div class="flex gap-5">
 
                                     <div class="md:w-1/2">
-                                        <select name="district" id="district" class="js-select">
+                                        <select name="IDtype" class="js-select">
                                             <option value="" selected>Select ID type</option>
-                                            <option value="N" <?php if ($query['IDtype'] == "N") {
+                                            <option value="(N)" <?php if ($query['IDtype'] == "(N)") {
                                                                     echo "selected";
                                                                 } ?>>N</option>
-                                            <option value="O">O</option>
-                                            <option value="P">P</option>
+                                            <option value="(O)" <?php if ($query['IDtype'] == "(O)") {
+                                                                    echo "selected";
+                                                                } ?>>O</option>
+                                            <option value="(P)" <?php if ($query['IDtype'] == "(P)") {
+                                                                    echo "selected";
+                                                                } ?>>P</option>
                                         </select>
                                     </div>
                                     <div class="md:w-1/2">

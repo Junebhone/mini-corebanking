@@ -7,8 +7,8 @@ include './operation/operation.php';
 $select = "select state_number_en from nrcs group by state_number_en";
 $query1 = mysqli_query($con, $select);
 
-$select1 = "select long_district from nrcs group by long_district";
-$query2 = mysqli_query($con, $select1);
+// $select1 = "select long_district from nrcs group by long_district";
+// $query2 = mysqli_query($con, $select1);
 
 
 $id = $_GET['id'];
