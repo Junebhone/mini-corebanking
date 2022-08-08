@@ -22,6 +22,12 @@ if (isset($_POST['submit'])) {
     $query = selecttwotable($con, "transaction", "account", "accountID", "accountID");
 }
 
+
+if (isset($_POST['reset'])) {
+    header("location: report.php");
+    exit();
+}
+
 include "./layout/header.php";
 include "./components/navigation.php";
 include "./components/report.php";

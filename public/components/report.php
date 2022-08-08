@@ -23,7 +23,7 @@
                                                                                                                                                     } else {
                                                                                                                                                         echo $da = date("Y-m-d");
                                                                                                                                                     } ?>"
-                class=" appearance-none block w-full bg-grey-lighter text-grey-darker border border-gray-300  py-3 pl-10 rounded-l-md datepicker-input"
+                class=" appearance-none block w-full bg-grey-lighter text-grey-darker border border-gray-300  py-3 pl-10 rounded-t-md 2xl:rounded-t-none  2xl:rounded-l-md datepicker-input"
                 placeholder="Start Date">
         </div>
         <div class="relative">
@@ -71,15 +71,20 @@
         </div>
         <div>
             <input type="text" id="simple-search" name="accountID" value="<?= $_POST['accountID'] ?>"
-                class="bg-white border border-gray-300 text-gray-900   focus:ring-blue-500 focus:border-blue-500 block w-full  py-3 px-4  "
+                class="bg-white border border-gray-300 text-gray-900   block w-full  py-3 px-4  "
                 placeholder="Search By AccountID">
         </div>
         <div class="flex justify-center w-full">
             <button type="submit" name="submit"
-                class="bg-gray-600 w-full text-gray-200 py-3 flex justify-center items-center rounded-r-md hover:bg-gray-800">
+                class="bg-gray-600 w-full text-gray-200 py-3 flex justify-center items-center  hover:bg-gray-800">
                 Filter
             </button>
+            <button type="submit" name="reset"
+                class="bg-red-500 w-full text-white py-3 flex justify-center items-center 2xl:rounded-r-md hover:bg-red-600">
+                Clear
+            </button>
         </div>
+
     </form>
 
 
