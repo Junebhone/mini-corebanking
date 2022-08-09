@@ -50,27 +50,36 @@
             <select class="js-select2 js-states form-control w-full" name="accountType">
                 <option value="" selected>Select Account Type</option>
                 <option value="1" <?php
-                                    if ($_POST['accountType'] == "1") {
-                                        echo "selected";
+
+
+                                    if (isset($_POST['accountType'])) {
+                                        if ($_POST['accountType'] == "1") {
+                                            echo "selected";
+                                        }
                                     }
+
 
                                     ?>>Saving Account</option>
                 <option value="2" <?php
-                                    if ($_POST['accountType'] == "2") {
-                                        echo "selected";
+                                    if (isset($_POST['accountType'])) {
+                                        if ($_POST['accountType'] == "2") {
+                                            echo "selected";
+                                        }
                                     }
 
                                     ?>>Fixed Deposit Account (6 months)</option>
                 <option value="3" <?php
-                                    if ($_POST['accountType'] == "3") {
-                                        echo "selected";
+                                    if (isset($_POST['accountType'])) {
+                                        if ($_POST['accountType'] == "3") {
+                                            echo "selected";
+                                        }
                                     }
 
                                     ?>>Fixed Deposit Acccount (1 year)</option>
             </select>
         </div>
         <div>
-            <input type="text" id="simple-search" name="accountID" value="<?= $_POST['accountID'] ?>"
+            <input type="text" id="simple-search" name="accountID" value="<?= condition($_POST['accountID']) ?>"
                 class="bg-white border border-gray-300 text-gray-900   block w-full  py-3 px-4  "
                 placeholder="Search By AccountID">
         </div>
@@ -140,17 +149,22 @@
                         <strong class=" w-32 py-2  bg-gray-500 text-gray-100  rounded-md">
 
                             <?php
-                                $type = $result['accountType'];
-                                switch ($type) {
-                                    case "1":
-                                        echo "Saving Account";
-                                        break;
-                                    case "2":
-                                        echo "Fixed Account (6 months)";
-                                        break;
-                                    case "3":
-                                        echo "Fixed Acccount (1 year)";
+
+
+                                if (isset($result['accountType'])) {
+                                    $type = $result['accountType'];
+                                    switch ($type) {
+                                        case "1":
+                                            echo "Saving Account";
+                                            break;
+                                        case "2":
+                                            echo "Fixed Account (6 months)";
+                                            break;
+                                        case "3":
+                                            echo "Fixed Acccount (1 year)";
+                                    }
                                 }
+
                                 ?>
 
 
@@ -175,7 +189,10 @@
                                                                 break;
                                                             default:
                                                                 echo "bg-gray-100 text-gray-600";
-                                                        } ?> text-white rounded-md">
+                                                        }
+                                                        ?>
+
+                                                            text-white rounded-md">
 
 
                             <?= $result['description']  ?></strong>
