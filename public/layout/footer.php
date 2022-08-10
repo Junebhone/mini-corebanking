@@ -16,8 +16,6 @@ $(document).ready(function domReady() {
         $(".hamburger").toggleClass("open");
     })
 
-
-
     //side nav bar dropdown
     $('.btn').click(function() {
         $(this).find("#arrow").toggleClass('rotate-180');
@@ -143,6 +141,53 @@ $(document).ready(function domReady() {
             }
         })
     }
+
+    $('input').mousedown(function(e) {
+        e.preventDefault();
+        $(this).blur();
+        return false;
+    });
+
+
+    const modal = document.querySelector('.modal');
+
+
+    $(".show-modal").on('click', () => {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+
+        $.ajax({
+            url: "transferTo.php",
+            type: "POST",
+            success: function(result) {
+                const arry = result.split("|");
+                const heading = arry[0];
+                const table = arry[1];
+                $("#content").html(heading);
+                $("#table").html(table);
+            }
+        })
+    });
+
+
+    $(".show-modal1").on('click', () => {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+
+        $.ajax({
+            url: "transferFrom.php",
+            type: "POST",
+            success: function(result) {
+                $("#content").html(result);
+                console.log(result);
+            }
+        })
+    });
+
+    $(document).on('click', '#close-modal', function() {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+    })
 
 
 })

@@ -3,7 +3,6 @@
 // //Call Session User Function every page
 loggedIn($_SESSION['username']);
 
-
 ?>
 
 
@@ -44,7 +43,7 @@ loggedIn($_SESSION['username']);
                     <a class="py-3 cursor-pointer" href="./transaction.php">Transaction list</a>
                     <a href="./deposit.php" class="py-3 cursor-pointer">Deposit</a>
                     <a href="./withdraw.php" class="py-3 cursor-pointer">Withdrawal</a>
-
+                    <a href="./transfer.php" class="py-3 cursor-pointer">Transfer</a>
                 </div>
             </div>
         </div>
