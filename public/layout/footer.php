@@ -107,6 +107,7 @@ $(document).ready(function domReady() {
     alert(".alert-NRC", "error", "This NRC has already registered");
     alert(".alert-amount", "error", "The amount is greater than the balance")
     alert(".status-blocked", "error", "This account has been blocked");
+    alert(".amount", "error", "The amount is greater than balance");
 
     $("#stateNumber").change(function() {
         const state_number_en = $(this).select2('val');
@@ -168,6 +169,52 @@ $(document).ready(function domReady() {
                 $("#table").html(table);
             }
         })
+
+        function displayData(e) {
+            let id = 0;
+            const td = $(".select");
+            let textvalues = [];
+
+            for (const value of td) {
+                if (value.dataset.id == e.target.dataset.id) {
+                    textvalues[id++] = value.dataset.id;
+                }
+            }
+            return textvalues;
+        }
+
+        $(document).on('click', '.select', function(e) {
+            let values = displayData(e);
+            let accountid = $("#accountID");
+            accountid.val(values);
+
+            if (accountid.val(values)) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        })
+
+        $("#ss").click(() => {
+            const account = $("#search").val();
+            console.log(account);
+
+            $.ajax({
+                url: "transferTo.php",
+                type: "POST",
+                data: {
+                    accountID: account
+                },
+                success: function(result) {
+                    console.log(result);
+                    const arry = result.split("|");
+                    const heading = arry[0];
+                    // const search = array[1];
+                    const table = arry[1];
+                    // $("#content").html(heading);
+                    $("#table").html(table);
+                }
+            })
+        })
     });
 
 
@@ -186,32 +233,51 @@ $(document).ready(function domReady() {
                 $("#table").html(table);
             }
         })
-    });
 
-    $(document).on('click', '.select', function(e) {
-        let values = displayData(e);
-        let accountid = $("#accountID");
-        accountid.val(values);
+        function displayData1(e) {
+            let id = 0;
+            const td = $(".select2");
+            let textvalues = [];
 
-        if (accountid.val(values)) {
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-        }
-    })
-
-    function displayData(e) {
-        let id = 0;
-        const td = $(".select");
-        let textvalues = [];
-
-        for (const value of td) {
-            if (value.dataset.id == e.target.dataset.id) {
-                textvalues[id++] = value.dataset.id;
+            for (const value of td) {
+                if (value.dataset.id == e.target.dataset.id) {
+                    textvalues[id++] = value.dataset.id;
+                }
             }
+            return textvalues;
         }
-        return textvalues;
-    }
+        $(document).on('click', '.select2', function(e) {
+            let values = displayData1(e);
+            let accountid = $("#accountID2");
+            accountid.val(values);
+            console.log(values);
+            if (accountid.val(values)) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        })
+        $("#ss").click(() => {
+            const account = $("#search").val();
+            console.log(account);
 
+            $.ajax({
+                url: "transferFrom.php",
+                type: "POST",
+                data: {
+                    accountID: account
+                },
+                success: function(result) {
+                    console.log(result);
+                    const arry = result.split("|");
+                    const heading = arry[0];
+                    // const search = array[1];
+                    const table = arry[1];
+                    // $("#content").html(heading);
+                    $("#table").html(table);
+                }
+            })
+        })
+    });
 
 
 
@@ -222,27 +288,7 @@ $(document).ready(function domReady() {
     })
 
 
-    $("#ss").click(() => {
-        const account = $("#search").val();
-        console.log(account);
 
-        $.ajax({
-            url: "transferTo.php",
-            type: "POST",
-            data: {
-                accountID: account
-            },
-            success: function(result) {
-                console.log(result);
-                const arry = result.split("|");
-                const heading = arry[0];
-                // const search = array[1];
-                const table = arry[1];
-                $("#content").html(heading);
-                $("#table").html(table);
-            }
-        })
-    })
 })
   </script>
 

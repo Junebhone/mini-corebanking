@@ -1,6 +1,6 @@
 <div class="flex flex-col  w-full h-screen p-5">
     <div class="bg-white w-full flex flex-col rounded-md shadow-md">
-        <form action="account_registration.php" method="POST" autocomplete="off">
+        <form action="transfer.php" method="POST" autocomplete="off">
             <span class="text-green-800 text-2xl font-semibold leading-tight flex p-5 justify-start items-center">
                 Transfer</span>
             <div class="xl:flex mb-6 px-5">
@@ -10,7 +10,7 @@
                         Transfer To
                     </label>
                     <div class="relative">
-                        <input name="customerID" id="accountID"
+                        <input name="accountIDto" id="accountID"
                             class="cursor show-modal  appearance-none block w-full bg-grey-lighter text-grey-darker border  rounded py-3 px-4 mb-3"
                             type="text" placeholder="Select Account">
                         <div
@@ -29,7 +29,7 @@
                         for="grid-first-name">
                         Ammount
                     </label>
-                    <input name="customerID"
+                    <input name="amount"
                         class="appearance-none block w-full bg-grey-lighter text-grey-darker border  rounded py-3 px-4 mb-3"
                         id="grid-first-name" type="number" placeholder="Enter Amount to Transfer">
                 </div>
@@ -39,7 +39,7 @@
                         Transfer From
                     </label>
                     <div class="relative">
-                        <input name="customerID"
+                        <input name="accountIDfrom" id="accountID2"
                             class="cursor show-modal1 appearance-none block w-full bg-grey-lighter text-grey-darker border  rounded py-3 px-4 mb-3"
                             type="text" placeholder="Select Account">
                         <div

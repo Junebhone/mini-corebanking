@@ -5,11 +5,17 @@ include "./operation/connect.php";
 include "./operation/operation.php";
 
 
-$query = selecttwotable($con, "account", "customer", "customerID", "customerID");
 
+$select = "SELECT * from account a inner join customer c on a.customerID = c.customerID where a.status='opened'";
+$query = mysqli_query($con, $select);
 
+if (isset($_POST['accountID'])) {
+    $accountID = $_POST['accountID'];
+    $select = "SELECT * from account inner join customer on account.customerID = customer.customerID where accountID like '%$accountID%' and account.status = 'opened'";
+    $query = mysqli_query($con, $select);
+};
 
-$heading = '<h4 class="text-lg font-bold">Transfer From</h4><svg
+$heading = '<h4 class="text-xl font-bold">Transfer From</h4><svg
 class="h-6 w-6 cursor-pointer p-1 hover:bg-gray-300 rounded-full" id="close-modal" fill="currentColor"
 viewBox="0 0 20 20">
 <path fill-rule="evenodd"
@@ -19,8 +25,10 @@ viewBox="0 0 20 20">
 
 
 
+
 while ($result = mysqli_fetch_array($query)) {
-    $table .= "<div class='flex  rounded-md justify-between border-grey-light border  bg-white'>
+
+    $table .= " <div class='flex  rounded-md justify-between border-grey-light border  bg-white'>
     <div class='p-4'>
         <div>
             <label class='text-lg font-medium'>UserName:</label>
@@ -32,10 +40,11 @@ while ($result = mysqli_fetch_array($query)) {
         </div>
     </div>
     <div class='flex'>
-        <button class='bg-green-600 text-white p-4 rounded-r-md' data-id=''>Select</button>
+        <button class='select2 bg-green-600 text-white p-4 rounded-r-md' data-id=" . "'" . $result['accountID'] . "'" . ">Select</button>
     </div>
 </div>";
 }
+
 
 
 
