@@ -82,7 +82,7 @@
             </button>
         </div>
         <div class="overflow-hidden mt-5 overflow-y-auto h-5/6">
-            <div class="flex flex-col w-full gap-4 relative   overflow-y-hidden" id="table">
+            <div class="flex flex-col w-full gap-4 relative" id="table">
 
 
             </div>
