@@ -2,7 +2,7 @@
   <script src="./js/select2.full.js"></script>
   <script src="./js/datepicker.js"></script>
   <script src="./js/sweetalert.js"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="./js/lottie.js"></script>
   <script>
 "use strict";
 
@@ -142,7 +142,7 @@ $(document).ready(function domReady() {
         })
     }
 
-    $('input').mousedown(function(e) {
+    $('.cursor').mousedown(function(e) {
         e.preventDefault();
         $(this).blur();
         return false;
@@ -152,14 +152,33 @@ $(document).ready(function domReady() {
     const modal = document.querySelector('.modal');
 
 
-    $(".show-modal").on('click', () => {
+    $(".show-modal").click(() => {
         modal.classList.remove('hidden');
         modal.classList.add('flex');
-
         $.ajax({
             url: "transferTo.php",
             type: "POST",
             success: function(result) {
+                console.log(result);
+                const arry = result.split("|");
+                const heading = arry[0];
+                // const search = array[1];
+                const table = arry[1];
+                $("#content").html(heading);
+                $("#table").html(table);
+            }
+        })
+    });
+
+
+    $(".show-modal1").click(() => {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        $.ajax({
+            url: "transferFrom.php",
+            type: "POST",
+            success: function(result) {
+                console.log("hi");
                 const arry = result.split("|");
                 const heading = arry[0];
                 const table = arry[1];
@@ -169,27 +188,61 @@ $(document).ready(function domReady() {
         })
     });
 
+    $(document).on('click', '.select', function(e) {
+        let values = displayData(e);
+        let accountid = $("#accountID");
+        accountid.val(values);
 
-    $(".show-modal1").on('click', () => {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
+        if (accountid.val(values)) {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+    })
 
-        $.ajax({
-            url: "transferFrom.php",
-            type: "POST",
-            success: function(result) {
-                $("#content").html(result);
-                console.log(result);
+    function displayData(e) {
+        let id = 0;
+        const td = $(".select");
+        let textvalues = [];
+
+        for (const value of td) {
+            if (value.dataset.id == e.target.dataset.id) {
+                textvalues[id++] = value.dataset.id;
             }
-        })
-    });
+        }
+        return textvalues;
+    }
+
+
+
 
     $(document).on('click', '#close-modal', function() {
         modal.classList.remove('flex');
         modal.classList.add('hidden');
+        $("#search").val(null);;
     })
 
 
+    $("#ss").click(() => {
+        const account = $("#search").val();
+        console.log(account);
+
+        $.ajax({
+            url: "transferTo.php",
+            type: "POST",
+            data: {
+                accountID: account
+            },
+            success: function(result) {
+                console.log(result);
+                const arry = result.split("|");
+                const heading = arry[0];
+                // const search = array[1];
+                const table = arry[1];
+                $("#content").html(heading);
+                $("#table").html(table);
+            }
+        })
+    })
 })
   </script>
 

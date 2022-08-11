@@ -10,8 +10,8 @@
                         Transfer To
                     </label>
                     <div class="relative">
-                        <input name="customerID"
-                            class="cursor show-modal  appearance-none block w-full bg-grey-lighter text-grey-darker border  rounded py-3 px-4 mb-3 show-modal"
+                        <input name="customerID" id="accountID"
+                            class="cursor show-modal  appearance-none block w-full bg-grey-lighter text-grey-darker border  rounded py-3 px-4 mb-3"
                             type="text" placeholder="Select Account">
                         <div
                             class="absolute inset-y-0 right-5 top-0 flex justify-end  items-center   pointer-events-none">
@@ -40,7 +40,7 @@
                     </label>
                     <div class="relative">
                         <input name="customerID"
-                            class="cursor show-modal1 appearance-none block w-full bg-grey-lighter text-grey-darker border  rounded py-3 px-4 mb-3 show-modal"
+                            class="cursor show-modal1 appearance-none block w-full bg-grey-lighter text-grey-darker border  rounded py-3 px-4 mb-3"
                             type="text" placeholder="Select Account">
                         <div
                             class="absolute inset-y-0 right-5 top-0 flex justify-end  items-center   pointer-events-none">
@@ -64,14 +64,14 @@
 
 </div>
 
-
 <div class="bg-black bg-opacity-50 absolute inset-0 hidden   justify-center items-center modal">
-    <div class="bg-slate-100 max-w-2xl w-full  p-5 rounded-md shadow-xl text-gray-800">
+    <div class="bg-slate-100 max-w-2xl w-full h-3/4 p-5 overflow-hidden  rounded-md shadow-xl text-gray-800">
         <div class=" flex justify-between items-center" id="content">
         </div>
         <div class="flex border-grey-light mt-5 bg-white border rounded-md">
-            <input class="w-full rounded ml-1 p-2" type="text" placeholder="Search with AccountID">
-            <button class="bg-grey-lightest border-grey border-l shadow hover:bg-grey-lightest">
+            <input class="w-full rounded ml-1 p-2" type="text" id="search" name="accountID"
+                placeholder="Search with AccountID" autocomplete="off">
+            <button name="search" id="ss" class="bg-grey-lightest border-grey border-l shadow hover:bg-grey-lightest">
                 <span class="w-auto flex justify-end items-center text-grey p-2 hover:text-grey-darkest">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2">
@@ -81,8 +81,13 @@
                 </span>
             </button>
         </div>
-        <div class="flex flex-col w-full gap-4 py-5" id="table">
+        <div class="overflow-hidden mt-5 overflow-y-auto h-5/6">
+            <div class="flex flex-col w-full gap-4 relative   overflow-y-hidden" id="table">
+
+
+            </div>
         </div>
+
     </div>
 
 </div>

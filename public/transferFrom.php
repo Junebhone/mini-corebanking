@@ -20,7 +20,21 @@ viewBox="0 0 20 20">
 
 
 while ($result = mysqli_fetch_array($query)) {
-    $table .= $result['accountID'];
+    $table .= "<div class='flex  rounded-md justify-between border-grey-light border  bg-white'>
+    <div class='p-4'>
+        <div>
+            <label class='text-lg font-medium'>UserName:</label>
+            <span>" . $result['FirstName'] . $result['LastName'] . "</span>
+        </div>
+        <div>
+            <label class='text-lg font-medium'>AccountID:</label>
+            <span>" . $result['accountID'] . "</span>
+        </div>
+    </div>
+    <div class='flex'>
+        <button class='bg-green-600 text-white p-4 rounded-r-md' data-id=''>Select</button>
+    </div>
+</div>";
 }
 
 
